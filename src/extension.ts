@@ -41,11 +41,11 @@ function awsBatchCommandTranslator (selectedText: string): string {
   // Split the arguments by space
   const argumentsArray = argumentsStr ? argumentsStr.split(/\s+/) : [];
 
-  // Insert "scripts/batch_command" at the beginning of the array
-  argumentsArray.unshift("scripts/batch_command");
+  // Create the transformed array with "scripts/batch_command" as first element
+  const transformedArray = ["scripts/batch_command", command, ...argumentsArray];
 
   // Convert the array to a JSON string
-  return JSON.stringify([command, ...argumentsArray]);
+  return JSON.stringify(transformedArray);
 }
 
 export function deactivate () { }
