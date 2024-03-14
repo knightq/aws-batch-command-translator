@@ -27,22 +27,15 @@ export function activate (context: vscode.ExtensionContext) {
 }
 
 function awsBatchCommandTranslator (selectedText: string): string {
-  // Regular expression to match command and arguments
-  const regex = /(?:^\w+\s)?([^\s]+)(?:\s(.*))?/;
-
-  // Extract command and arguments from the selected text
-  const match = selectedText.match(regex);
-  if (!match) {
+  if (!selectedText) {
     return selectedText;
   }
 
-  const [, command, argumentsStr] = match;
-
   // Split the arguments by space
-  const argumentsArray = argumentsStr ? argumentsStr.split(/\s+/) : [];
+  const argumentsArray = selectedText.split(/\s+/)
 
   // Create the transformed array with "scripts/batch_command" as first element
-  const transformedArray = ["scripts/batch_command", command, ...argumentsArray];
+  const transformedArray = ["scripts/batch_command", ...argumentsArray];
 
   // Convert the array to a JSON string
   return JSON.stringify(transformedArray);
