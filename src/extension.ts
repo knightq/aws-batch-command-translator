@@ -28,7 +28,7 @@ export function activate (context: vscode.ExtensionContext) {
 
 function awsBatchCommandTranslator (selectedText: string): string {
   // Regular expression to match command and arguments
-  const regex = /(?:\w+\s)?([^\s]+)(?:\s(.*))?/;
+  const regex = /(?:^\w+\s)?([^\s]+)(?:\s(.*))?/;
 
   // Extract command and arguments from the selected text
   const match = selectedText.match(regex);
