@@ -2,8 +2,8 @@
   "name": "aws-batch-command-translator",
   "displayName": "aws-batch-command-translator",
   "description": "AWS Batch Command Translator for VS Code",
-  "version": "0.0.1",
-  "publisher": "vscode-samples",
+  "version": "0.0.2",
+  "publisher": "AndreaSalicetti",
   "repository": "https://github.com/knightq/aws-batch-command-translator",
   "engines": {
     "vscode": "^1.74.0"

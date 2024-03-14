@@ -27,7 +27,7 @@ export function activate (context: vscode.ExtensionContext) {
 }
 
 function awsBatchCommandTranslator (selectedText: string): string {
-  // Regular expression to match commands and arguments
+  // Regular expression to match command and arguments
   const regex = /(?:\w+\s)?([^\s]+)(?:\s(.*))?/;
 
   // Extract command and arguments from the selected text
@@ -38,14 +38,14 @@ function awsBatchCommandTranslator (selectedText: string): string {
 
   const [, command, argumentsStr] = match;
 
-  // Create an array with the command and its arguments
-  const transformedArray = [command];
-  if (argumentsStr) {
-    transformedArray.push(...argumentsStr.split(/\s+/));
-  }
+  // Split the arguments by space
+  const argumentsArray = argumentsStr ? argumentsStr.split(/\s+/) : [];
+
+  // Insert "scripts/batch_command" at the beginning of the array
+  argumentsArray.unshift("scripts/batch_command");
 
   // Convert the array to a JSON string
-  return JSON.stringify(transformedArray);
+  return JSON.stringify([command, ...argumentsArray]);
 }
 
 export function deactivate () { }
